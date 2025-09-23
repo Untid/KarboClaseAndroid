@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/hablandodk"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="383dp"
+        android:layout_height="60dp"
+        android:hint="Nombre"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
+
+    <EditText
+        android:id="@+id/etApellidos"
+        android:layout_width="384dp"
+        android:layout_height="70dp"
+        android:hint="Apellidos"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
+
+    <EditText
+        android:id="@+id/etFechaNacimiento"
+        android:layout_width="383dp"
+        android:layout_height="61dp"
+        android:hint="Fecha de nacimiento (dd/mm/yyyy)"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
+
+    <Button
+        android:id="@+id/btnCalcular"
+        android:layout_width="109dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        app:roundedRadius="20dp"
+        android:text="Button" />
+
+</LinearLayout>

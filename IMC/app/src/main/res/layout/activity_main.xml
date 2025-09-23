@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondoindustrial"
+    tools:context=".MainActivity">
+
+
+    <EditText
+        android:id="@+id/editTextNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
+        android:layout_marginTop="78dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="89dp"
+        android:ems="10"
+        android:hint="Introduce tu nombre"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/radioGroup3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtSaludo"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginBottom="59dp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/btnCalcular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAltura" />
+
+    <Button
+        android:id="@+id/btnCalcular"
+        android:layout_width="110dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="262dp"
+        android:backgroundTint="@color/cardview_dark_background"
+        android:text="Calcular"
+        android:textColor="@color/cardview_light_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="133dp"
+        app:layout_constraintStart_toStartOf="@+id/sbPeso"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/rbVaron"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Varon"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/rbHembra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hembra"
+            android:textColor="@color/white" />
+    </RadioGroup>
+
+    <SeekBar
+        android:id="@+id/sbPeso"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginBottom="14dp"
+        android:max="150"
+        android:min="0"
+        android:progress="0"
+        app:layout_constraintBottom_toTopOf="@+id/txtAltura"
+        app:layout_constraintEnd_toEndOf="@+id/sbAltura"
+        app:layout_constraintStart_toStartOf="@+id/sbAltura"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup3" />
+
+    <SeekBar
+        android:id="@+id/sbAltura"
+        android:layout_width="177dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginBottom="41dp"
+        android:max="300"
+        android:min="0"
+        android:progress="0"
+        app:layout_constraintBottom_toTopOf="@+id/txtSaludo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sbPeso" />
+
+    <TextView
+        android:id="@+id/txtPeso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/sbPeso"
+        app:layout_constraintTop_toTopOf="@+id/sbPeso" />
+
+    <TextView
+        android:id="@+id/txtAltura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginBottom="154dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/btnCalcular"
+        app:layout_constraintStart_toEndOf="@+id/sbAltura"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNombre" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
