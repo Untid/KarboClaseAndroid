@@ -1,7 +1,10 @@
 package com.example.layouts;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -24,6 +27,7 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
+    Button btnSiguiente;
     String apikey = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXZpZXIub3Rlcm8ubG91emFvQGNvbGV4aW8ta2FyYm8uY29tIiwianRpIjoiZmFkZTMyMDktMWEwMS00YTdlLTk0ZGEtNmZmMzNlZjJkODJiIiwiaXNzIjoiQUVNRVQiLCJpYXQiOjE3NTg1NDYzODMsInVzZXJJZCI6ImZhZGUzMjA5LTFhMDEtNGE3ZS05NGRhLTZmZjMzZWYyZDgyYiIsInJvbGUiOiIifQ.07_l1ZVdPOrDFg42w7JPXF2BMCcWn2tHgVHcZZQlBj0 ";
     RequestQueue cola;
     TextView txtTemperatura;
@@ -31,11 +35,27 @@ public class MainActivity extends AppCompatActivity {
     TextView txtMaxima;
     TextView txtMinima;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        btnSiguiente = findViewById(R.id.btnSiguiente);
+
+        btnSiguiente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent miIntent = new Intent(getBaseContext(),MainActivity2.class);
+                miIntent.putExtra("nombre","Moncho");
+                startActivity(miIntent);
+
+            }
+        });
+
+
+
+
         txtTemperatura = findViewById(R.id.txtTemperatura);
         txtEstadoCielo = findViewById(R.id.txtEstadoCielo);
         txtMaxima = findViewById(R.id.txtMaxima);
