@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Confirmamos">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="63dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btnConfirmar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirmar" />
+
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volver" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtUbicacionRes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        app:layout_constraintStart_toStartOf="@+id/txtDescripcionRes"
+        app:layout_constraintTop_toBottomOf="@+id/txtTituloRes" />
+
+    <TextView
+        android:id="@+id/txtTitulo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginBottom="38dp"
+        android:text="Titulo"
+        app:layout_constraintBottom_toTopOf="@+id/txtUbicacion2"
+        app:layout_constraintStart_toStartOf="@+id/txtUbicacion2" />
+
+    <TextView
+        android:id="@+id/txtFechaInicio2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:text="Fecha y hora de Inicio"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtFechaInicioRes"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtFechaInicioRes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        app:layout_constraintEnd_toStartOf="@+id/txtFechaFinRes"
+        app:layout_constraintStart_toStartOf="@+id/txtFechaFinRes"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescripcionRes" />
+
+    <TextView
+        android:id="@+id/txtDescripcion2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="22dp"
+        android:text="Descripción"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtDescripcionRes"
+        app:layout_constraintEnd_toEndOf="@+id/txtFechaInicio2" />
+
+    <TextView
+        android:id="@+id/txtFechaFinRes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="27dp"
+        app:layout_constraintStart_toEndOf="@+id/txtFechaFin2"
+        app:layout_constraintTop_toBottomOf="@+id/txtFechaInicioRes" />
+
+    <TextView
+        android:id="@+id/txtDescripcionRes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        app:layout_constraintEnd_toStartOf="@+id/txtFechaInicioRes"
+        app:layout_constraintStart_toStartOf="@+id/txtFechaInicioRes"
+        app:layout_constraintTop_toBottomOf="@+id/txtUbicacionRes" />
+
+    <TextView
+        android:id="@+id/txtTituloRes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="38dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtUbicacion2"
+        app:layout_constraintEnd_toStartOf="@+id/txtUbicacionRes"
+        app:layout_constraintStart_toStartOf="@+id/txtUbicacionRes" />
+
+    <TextView
+        android:id="@+id/txtFechaFin2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha y hora de Fin"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtFechaFinRes"
+        app:layout_constraintEnd_toEndOf="@+id/txtFechaInicio2" />
+
+    <TextView
+        android:id="@+id/txtUbicacion2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="205dp"
+        android:text="Ubicación"
+        app:layout_constraintStart_toStartOf="@+id/txtDescripcion2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
