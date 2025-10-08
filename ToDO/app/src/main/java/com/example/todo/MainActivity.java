@@ -12,6 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Clase principal de la lista de tareas.
+ * La interfaz AppCompatActivity permite manejar la interfaz de usuario principal.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
@@ -24,66 +29,82 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // ------------ Inicialización de vistas y componentes-------------------------------
         editTextTask = findViewById(R.id.editTextTask);
         Button btnAdd = findViewById(R.id.btnAdd);
         recyclerView = findViewById(R.id.recyclerViewTasks);
-        taskDao = new TaskDao(this);
+        taskDao = new TaskDao(this); // Inicializao el DAO con el contexto actual
 
+
+        // Configura el RecyclerView con un layout vertical
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // 1. Primero crea el adaptador (aunque la lista esté vacía)
+
+        // Crea el adaptador (inicialmente con una lista vacía)
         List<Task> emptyList = new ArrayList<>();
         adapter = new TaskAdapter(emptyList, new TaskAdapter.OnTaskActionListener() {
             @Override
             public void onEditClick(int position) {
-                editTask(position);
+                editTask(position); // Acción cuando se presiona "editar"
             }
-
             @Override
             public void onDeleteClick(int position) {
-                deleteTask(position);
+                deleteTask(position); // Acción cuando se presiona "eliminar"
             }
         });
 
+        // Asocia el adaptador al RecyclerView
         recyclerView.setAdapter(adapter);
 
-        // 2. AHORA sí carga las tareas y actualiza el adaptador
+        // Carga las tareas a la base de datos (SQLite)
         loadTasks();
 
-        // 3. Configura el botón
+        // Configura el botón "Agregar tarea"
         btnAdd.setOnClickListener(v -> {
             String taskText = editTextTask.getText().toString().trim();
+
             if (!taskText.isEmpty()) {
+                // Crea una nueva tarea y la guarda en base de datos
                 Task newTask = new Task(taskText);
                 taskDao.insertTask(newTask);
-                loadTasks(); // Recargar y notificar
+
+                // Recarga las tareas para reflejar los cambios
+                loadTasks();
                 editTextTask.setText("");
             } else {
+                // Si el campo está vacío, muestra un aviso al usuario
                 Toast.makeText(MainActivity.this, "Escribe una tarea", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
+    /**
+     * Carga todas las tareas desde la base de datos y actualiza el RecycleView
+     */
     private void loadTasks() {
-        List<Task> tasks = taskDao.getAllTasks();
-        adapter.updateTasks(tasks);
+        List<Task> tasks = taskDao.getAllTasks(); // Obtiene las tareas de la base de datos
+        adapter.updateTasks(tasks);               // Notifica al adaptador para refrescar la vista
     }
 
-    private List<Task> getTasksFromAdapter() {
-        // Hack temporal: como no exponemos la lista, la volvemos a cargar
-        // Mejor práctica: mantener una lista local o usar un ViewModel (pero en Java simple)
-        return taskDao.getAllTasks();
-    }
-
+    /**
+     * Permite editar una tarea existente.
+     * Abre un cuadro de diálogo donde el usuario puede modificar el texto.
+     * @param position
+     */
     private void editTask(int position) {
         List<Task> currentTasks = taskDao.getAllTasks();
+
+        // Verifica que la posición sea válida
         if (position < 0 || position >= currentTasks.size()) return;
 
         Task currentTask = currentTasks.get(position);
+
+        // Crea un campo de texto para editar
         EditText editText = new EditText(this);
         editText.setText(currentTask.getDescription());
         editText.setSingleLine(true);
 
+        // Crea un diálogo de edición
         new AlertDialog.Builder(this)
                 .setTitle("Editar tarea")
                 .setView(editText)
@@ -99,12 +120,23 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
+    /**
+     * Elimina una tarea de la base de datos y actualiza la lista.
+     * @param position
+     */
     private void deleteTask(int position) {
         List<Task> currentTasks = taskDao.getAllTasks();
+
+        // Verifica que la posición sea válida
         if (position < 0 || position >= currentTasks.size()) return;
 
+        // Obtiene el ID de la tarea a eliminar
         long taskId = currentTasks.get(position).getId();
+
+        // Borra la tarea del almacenamiento
         taskDao.deleteTask(taskId);
-        loadTasks(); // Refrescar
+
+        // Refresca la lista del RecyclerView
+        loadTasks();
     }
 }
