@@ -1,0 +1,30 @@
+<!-- res/layout/activity_main.xml (versión con Konfetti) -->
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <Button
+        android:id="@+id/fullscreenButton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:text=""
+        android:clickable="true"
+        android:focusable="true" />
+
+    <!-- Contenedor para números amarillos, etc. -->
+    <FrameLayout
+        android:id="@+id/effectsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- KonfettiView debe estar al final para que esté encima -->
+    <nl.dionsegijn.konfetti.KonfettiView
+        android:id="@+id/konfettiView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</FrameLayout>
